@@ -1083,6 +1083,13 @@ LIGHTSEED PREMIUM HERO
   object-fit: cover;
   transition: transform 0.72s cubic-bezier(0.22, 1, 0.36, 1), filter 0.72s;
 }
+
+.ls-overlay-logo-img {
+  object-fit: contain !important;
+  object-position: center;
+  padding: clamp(1.2rem, 2.8vw, 2rem);
+  background: radial-gradient(circle at center, rgba(250,246,238,0.16), rgba(0,0,0,0.35));
+}
 .ls-home-card-img-education {
   object-position: center 42%;
 }
