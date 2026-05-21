@@ -1,0 +1,85 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Programs{% endblock %}
+{% block page_title %}Programs{% endblock %}
+{% block admin_content %}
+
+<!-- Add Program Form -->
+<div style="background:#fff;border-radius:14px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,0.05);margin-bottom:1.5rem;">
+  <h6 style="font-size:0.9rem;font-weight:600;margin-bottom:1rem;">Add New Program</h6>
+  <form method="POST" action="/admin/programs/add">
+    <div class="row g-3">
+      <div class="col-sm-6 col-lg-3">
+        <input type="text" name="title" class="form-control form-control-sm" placeholder="Program title *" required style="border-radius:8px;">
+      </div>
+      <div class="col-sm-6 col-lg-2">
+        <select name="category" class="form-select form-select-sm" required style="border-radius:8px;">
+          <option value="">Category *</option>
+          <option value="training">Training</option>
+          <option value="shuddhi">Shuddhi</option>
+          <option value="education">Education</option>
+          <option value="healing">Healing</option>
+          <option value="therapy">Therapy</option>
+        </select>
+      </div>
+      <div class="col-sm-6 col-lg-3">
+        <input type="text" name="description" class="form-control form-control-sm" placeholder="Short description" style="border-radius:8px;">
+      </div>
+      <div class="col-sm-3 col-lg-1">
+        <input type="text" name="tag" class="form-control form-control-sm" placeholder="Tag" style="border-radius:8px;">
+      </div>
+      <div class="col-sm-3 col-lg-1">
+        <input type="text" name="icon" class="form-control form-control-sm" placeholder="Icon 🎯" style="border-radius:8px;">
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-sm" style="background:#2D4A3E;color:#fff;border-radius:8px;padding:0.42rem 1.1rem;font-size:0.8rem;">Add Program</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Programs Table -->
+<div class="admin-table">
+  <div class="d-flex justify-content-between align-items-center p-3" style="border-bottom:1px solid #eee;">
+    <h6 class="mb-0" style="font-size:0.9rem;font-weight:600;">All Programs</h6>
+    <span style="font-size:0.78rem;color:#888;">{{ programs|length }} programs</span>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead><tr>
+        <th>Icon</th><th>Title</th><th>Category</th><th>Tag</th><th>Description</th><th>Status</th><th>Toggle</th>
+      </tr></thead>
+      <tbody>
+        {% for p in programs %}
+        <tr {% if not p['active'] %}style="opacity:0.5;"{% endif %}>
+          <td style="font-size:1.3rem;">{{ p['icon'] or '📌' }}</td>
+          <td style="font-weight:500;font-size:0.85rem;">{{ p['title'] }}</td>
+          <td>
+            <span style="font-size:0.7rem;background:#f0f0f0;padding:0.2rem 0.6rem;border-radius:100px;text-transform:capitalize;">{{ p['category'] }}</span>
+          </td>
+          <td style="font-size:0.78rem;">{{ p['tag'] or '—' }}</td>
+          <td style="font-size:0.78rem;color:#666;max-width:250px;">{{ (p['description'] or '')[:80] }}{% if p['description'] and p['description']|length > 80 %}…{% endif %}</td>
+          <td>
+            {% if p['active'] %}
+              <span style="background:#E8F5E9;color:#2E7D32;border-radius:100px;padding:0.2rem 0.6rem;font-size:0.7rem;">Active</span>
+            {% else %}
+              <span style="background:#F5F5F5;color:#888;border-radius:100px;padding:0.2rem 0.6rem;font-size:0.7rem;">Inactive</span>
+            {% endif %}
+          </td>
+          <td>
+            <form method="POST" action="/admin/programs/{{ p['id'] }}/toggle">
+              <button type="submit" class="btn btn-sm"
+                style="border-radius:8px;font-size:0.72rem;border:none;
+                       background:{% if p['active'] %}#FFEBEE;color:#C62828{% else %}#E8F5E9;color:#2E7D32{% endif %};">
+                {% if p['active'] %}Deactivate{% else %}Activate{% endif %}
+              </button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" class="text-center" style="color:#aaa;padding:2rem;">No programs yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

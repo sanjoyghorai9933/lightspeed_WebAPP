@@ -1,0 +1,126 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block admin_content %}
+<!-- Stat Cards -->
+<div class="row g-3 mb-4">
+  <div class="col-6 col-lg-2">
+    <div class="stat-card">
+      <div class="d-flex justify-content-between align-items-start mb-2">
+        <div class="stat-icon" style="background:#E8F5E9;"><i class="bi bi-envelope-fill" style="color:#2E7D32;"></i></div>
+      </div>
+      <div class="stat-num" style="color:#2E7D32;">{{ stats.new_enquiries }}</div>
+      <div class="stat-label">New Enquiries</div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-2">
+    <div class="stat-card">
+      <div class="stat-icon mb-2" style="background:#E3F2FD;"><i class="bi bi-people-fill" style="color:#1565C0;"></i></div>
+      <div class="stat-num" style="color:#1565C0;">{{ stats.enquiries }}</div>
+      <div class="stat-label">Total Enquiries</div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-2">
+    <div class="stat-card">
+      <div class="stat-icon mb-2" style="background:#FFF8E1;"><i class="bi bi-mailbox-flag" style="color:#F57F17;"></i></div>
+      <div class="stat-num" style="color:#F57F17;">{{ stats.newsletter }}</div>
+      <div class="stat-label">Subscribers</div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-2">
+    <div class="stat-card">
+      <div class="stat-icon mb-2" style="background:#F3E5F5;"><i class="bi bi-chat-quote-fill" style="color:#6A1B9A;"></i></div>
+      <div class="stat-num" style="color:#6A1B9A;">{{ stats.testimonials_pending }}</div>
+      <div class="stat-label">Pending Reviews</div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-2">
+    <div class="stat-card">
+      <div class="stat-icon mb-2" style="background:#E8F5E9;"><i class="bi bi-collection-fill" style="color:#2E7D32;"></i></div>
+      <div class="stat-num" style="color:#2E7D32;">{{ stats.programs }}</div>
+      <div class="stat-label">Active Programs</div>
+    </div>
+  </div>
+  <div class="col-6 col-lg-2">
+    <div class="stat-card">
+      <div class="stat-icon mb-2" style="background:#FFFDE7;"><i class="bi bi-eye-fill" style="color:#F9A825;"></i></div>
+      <div class="stat-num" style="color:#F9A825;">{{ stats.page_views }}</div>
+      <div class="stat-label">Page Views</div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-4">
+  <!-- Recent Enquiries -->
+  <div class="col-lg-7">
+    <div class="admin-table">
+      <div class="d-flex justify-content-between align-items-center p-3" style="border-bottom:1px solid #eee;">
+        <h6 class="mb-0" style="font-size:0.9rem;font-weight:600;">Recent Enquiries</h6>
+        <a href="/admin/enquiries" style="font-size:0.78rem;color:#2D4A3E;">View all →</a>
+      </div>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Name</th><th>Interest</th><th>Status</th><th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for e in recent %}
+            <tr>
+              <td>
+                <div style="font-weight:500;">{{ e['name'] }}</div>
+                <div style="font-size:0.75rem;color:#888;">{{ e['email'] }}</div>
+              </td>
+              <td style="font-size:0.78rem;max-width:120px;">{{ e['interest'] or '—' }}</td>
+              <td><span class="badge-{{ e['status'] }}">{{ e['status']|title }}</span></td>
+              <td style="font-size:0.75rem;color:#888;">{{ e['created_at'][:10] }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Views -->
+  <div class="col-lg-5">
+    <div class="admin-table">
+      <div class="p-3" style="border-bottom:1px solid #eee;">
+        <h6 class="mb-0" style="font-size:0.9rem;font-weight:600;">Top Pages</h6>
+      </div>
+      <div class="p-3">
+        {% for p in top_pages %}
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <div style="font-size:0.84rem;font-weight:500;text-transform:capitalize;">{{ p['page'] }}</div>
+            <div style="background:#eee;height:4px;border-radius:4px;width:{{ (p['cnt'] / top_pages[0]['cnt'] * 160)|int }}px;margin-top:4px;background:linear-gradient(90deg,#2D4A3E,#4AADA0);"></div>
+          </div>
+          <span style="font-size:0.85rem;font-weight:600;color:#2D4A3E;">{{ p['cnt'] }}</span>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="mt-3" style="background:#fff;border-radius:14px;padding:1.25rem;box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+      <h6 style="font-size:0.85rem;margin-bottom:1rem;font-weight:600;">Quick Actions</h6>
+      <div class="d-grid gap-2">
+        <a href="/admin/enquiries?status=new" class="btn btn-sm" style="background:#E8F5E9;color:#2E7D32;border:none;text-align:left;font-size:0.8rem;border-radius:8px;">
+          <i class="bi bi-inbox me-2"></i>View New Enquiries
+        </a>
+        <a href="/admin/testimonials" class="btn btn-sm" style="background:#F3E5F5;color:#6A1B9A;border:none;text-align:left;font-size:0.8rem;border-radius:8px;">
+          <i class="bi bi-chat-quote me-2"></i>Review Testimonials
+        </a>
+        <a href="/admin/programs" class="btn btn-sm" style="background:#E3F2FD;color:#1565C0;border:none;text-align:left;font-size:0.8rem;border-radius:8px;">
+          <i class="bi bi-collection me-2"></i>Manage Programs
+        </a>
+        <a href="/" target="_blank" class="btn btn-sm" style="background:#FFF8E1;color:#F57F17;border:none;text-align:left;font-size:0.8rem;border-radius:8px;">
+          <i class="bi bi-globe me-2"></i>View Live Website
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

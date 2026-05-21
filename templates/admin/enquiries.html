@@ -1,0 +1,62 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Enquiries{% endblock %}
+{% block page_title %}Enquiries{% endblock %}
+{% block admin_content %}
+<!-- Filters -->
+<div class="d-flex flex-wrap gap-3 mb-4 align-items-center">
+  <form method="GET" class="d-flex gap-2 flex-wrap">
+    <input type="text" name="search" value="{{ search }}" placeholder="Search name, email, org…" class="form-control form-control-sm" style="width:220px;border-radius:100px;">
+    <select name="status" class="form-select form-select-sm" style="width:140px;border-radius:100px;">
+      <option value="">All Status</option>
+      <option {% if status=='new' %}selected{% endif %}>new</option>
+      <option {% if status=='contacted' %}selected{% endif %}>contacted</option>
+      <option {% if status=='converted' %}selected{% endif %}>converted</option>
+      <option {% if status=='closed' %}selected{% endif %}>closed</option>
+    </select>
+    <button type="submit" class="btn btn-sm" style="background:#2D4A3E;color:#fff;border-radius:100px;padding:0.35rem 1rem;">Filter</button>
+    <a href="/admin/enquiries" class="btn btn-sm" style="border:1px solid #ddd;border-radius:100px;">Clear</a>
+  </form>
+  <span style="font-size:0.78rem;color:#888;margin-left:auto;">{{ enquiries|length }} records</span>
+</div>
+
+<div class="admin-table">
+  <div class="table-responsive">
+    <table class="table">
+      <thead><tr>
+        <th>#</th><th>Name</th><th>Organisation</th><th>Interest</th>
+        <th>Message</th><th>Status</th><th>Date</th><th>Action</th>
+      </tr></thead>
+      <tbody>
+        {% for e in enquiries %}
+        <tr>
+          <td style="color:#aaa;font-size:0.75rem;">{{ e['id'] }}</td>
+          <td>
+            <div style="font-weight:500;font-size:0.85rem;">{{ e['name'] }}</div>
+            <div style="font-size:0.73rem;color:#888;">{{ e['email'] }}</div>
+            {% if e['phone'] %}<div style="font-size:0.72rem;color:#aaa;">{{ e['phone'] }}</div>{% endif %}
+          </td>
+          <td style="font-size:0.82rem;">{{ e['org'] or '—' }}</td>
+          <td style="font-size:0.78rem;max-width:140px;">{{ e['interest'] or '—' }}</td>
+          <td style="font-size:0.78rem;max-width:200px;color:#555;">{{ (e['message'] or '')[:80] }}{% if e['message'] and e['message']|length > 80 %}…{% endif %}</td>
+          <td><span class="badge-{{ e['status'] }}">{{ e['status']|title }}</span></td>
+          <td style="font-size:0.73rem;color:#aaa;white-space:nowrap;">{{ e['created_at'][:16] }}</td>
+          <td>
+            <form method="POST" action="/admin/enquiries/{{ e['id'] }}/status" class="d-flex gap-1">
+              <select name="status" class="form-select form-select-sm" style="width:110px;font-size:0.75rem;border-radius:8px;">
+                <option {% if e['status']=='new' %}selected{% endif %} value="new">New</option>
+                <option {% if e['status']=='contacted' %}selected{% endif %} value="contacted">Contacted</option>
+                <option {% if e['status']=='converted' %}selected{% endif %} value="converted">Converted</option>
+                <option {% if e['status']=='closed' %}selected{% endif %} value="closed">Closed</option>
+              </select>
+              <button type="submit" class="btn btn-sm" style="background:#2D4A3E;color:#fff;font-size:0.72rem;border-radius:8px;">✓</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="8" class="text-center" style="color:#aaa;padding:2rem;">No enquiries found.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

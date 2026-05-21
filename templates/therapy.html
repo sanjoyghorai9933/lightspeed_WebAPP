@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+{% block title %}Therapy & Coaching{% endblock %}
+{% block content %}
+
+<div class="ls-page-hero" style="background:linear-gradient(135deg,#2D2640,#3D3558,#4A4070);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:0;">
+    <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?w=1400&q=70" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.1;mix-blend-mode:luminosity;">
+  </div>
+  <div class="container position-relative" style="z-index:1;">
+    <span class="section-eyebrow" style="color:var(--ls-lavender);" data-anim="fade-down">Therapy & Coaching</span>
+    <h1 data-anim="fade-up" data-delay="150">Some challenges need more than conversation.<br>They need a safe space.</h1>
+    <p data-anim="fade-up" data-delay="280">Confidential, structured support for individuals seeking clarity, healing and meaningful change.</p>
+    <a href="/contact" class="mt-4 d-inline-block" data-anim="scale-in" data-delay="400"
+       style="background:var(--ls-lavender);color:var(--ls-dark);border-radius:100px;padding:0.75rem 1.8rem;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.25s;">
+      Begin the Conversation
+    </a>
+  </div>
+</div>
+
+<!-- WHEN SUPPORT NEEDED -->
+<section class="py-5" style="background:var(--ls-lavender-pale);padding:5rem 0;">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5" data-anim="fade-left">
+        <span class="section-eyebrow" style="color:#4A3570;">When Support is Needed</span>
+        <p class="ls-big-quote" data-anim="blur-in" data-delay="100">There are times when patterns <em style="color:#6B4FA0;">repeat despite effort.</em></p>
+        <div data-stagger="110" class="mt-3">
+          <div class="d-flex gap-3 mb-2"><span class="ls-truth-dot mt-2" style="background:var(--ls-lavender);"></span><p class="mb-0" style="color:var(--ls-text-muted);">Stress becomes difficult to manage</p></div>
+          <div class="d-flex gap-3 mb-2"><span class="ls-truth-dot mt-2" style="background:var(--ls-lavender);"></span><p class="mb-0" style="color:var(--ls-text-muted);">Emotions feel overwhelming</p></div>
+          <div class="d-flex gap-3 mb-2"><span class="ls-truth-dot mt-2" style="background:var(--ls-lavender);"></span><p class="mb-0" style="color:var(--ls-text-muted);">Clarity seems out of reach</p></div>
+          <div class="d-flex gap-3 mb-2"><span class="ls-truth-dot mt-2" style="background:var(--ls-lavender);"></span><p class="mb-0" style="color:var(--ls-text-muted);">Transitions feel uncertain</p></div>
+        </div>
+        <p style="color:var(--ls-text-muted);margin-top:1.5rem;line-height:1.8;font-style:italic;">In such moments, what helps is not advice — but guided understanding.</p>
+      </div>
+      <div class="col-lg-6 offset-lg-1" data-anim="fade-right" data-delay="200">
+        <blockquote style="font-family:'Cormorant Garamond',serif;font-size:1.45rem;line-height:1.55;color:var(--ls-dark);font-style:italic;border-left:3px solid var(--ls-lavender);padding-left:1.5rem;">
+          Safe. Structured. Confidential.<br><br>
+          Every individual's journey is unique, respected and approached without judgement.
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFFERINGS -->
+<section class="py-5 bg-ls-cream" style="padding:5rem 0;">
+  <div class="container">
+    <span class="section-eyebrow" style="color:#6B4FA0;" data-anim="fade-down">Core Offerings</span>
+    <h2 class="mb-5" data-anim="blur-in" data-delay="120">A space to understand and grow</h2>
+    <div class="row g-4" data-stagger="110">
+      <div class="col-md-6">
+        <div class="ls-card p-4 h-100" style="border-top:3px solid var(--ls-lavender);">
+          <span class="ls-tag ls-tag-therapy">Flagship</span>
+          <div style="font-size:1.8rem;margin-bottom:0.75rem;">🕊️</div>
+          <h5>Saarthi</h5>
+          <p style="font-size:0.83rem;color:var(--ls-text-muted);">Individual therapy and coaching. One-on-one support for emotional clarity, behavioural insight and personal challenges.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="ls-card p-4 h-100" style="border-top:3px solid var(--ls-lavender);">
+          <span class="ls-tag ls-tag-therapy">Group</span>
+          <div style="font-size:1.8rem;margin-bottom:0.75rem;">👥</div>
+          <h5>Group Counselling</h5>
+          <p style="font-size:0.83rem;color:var(--ls-text-muted);">Facilitated group environments for shared understanding, emotional processing and collective support.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="ls-card p-4 h-100" style="border-top:3px solid var(--ls-lavender);">
+          <span class="ls-tag ls-tag-therapy">Stress</span>
+          <div style="font-size:1.8rem;margin-bottom:0.75rem;">🌊</div>
+          <h5>Stress Management</h5>
+          <p style="font-size:0.83rem;color:var(--ls-text-muted);">Practical tools and guided processes to manage stress, regulate emotions and navigate pressure.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="ls-card p-4 h-100" style="border-top:3px solid var(--ls-lavender);">
+          <span class="ls-tag ls-tag-therapy">Specialist</span>
+          <div style="font-size:1.8rem;margin-bottom:0.75rem;">✨</div>
+          <h5>Hypnotherapy</h5>
+          <p style="font-size:0.83rem;color:var(--ls-text-muted);">Evidence-informed interventions for behavioural change, habit patterns and deeper emotional work. Delivered with care and ethics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIDENTIALITY NOTE -->
+<section class="py-5 text-center" style="background:linear-gradient(135deg,#2D2640,#1E1A30);padding:5rem 0;">
+  <div class="container">
+    <p class="serif fst-italic mx-auto" style="font-size:clamp(1.4rem,3vw,2.2rem);color:var(--ls-cream);line-height:1.4;max-width:550px;margin-bottom:1.5rem;" data-anim="blur-in">
+      "Awareness creates choice.<br>And choice creates change."
+    </p>
+    <p style="color:rgba(250,246,238,0.5);margin-bottom:0.75rem;" data-anim="fade-up" data-delay="150">You don't have to navigate everything alone.</p>
+    <p style="color:rgba(250,246,238,0.3);font-size:0.8rem;margin-bottom:2.5rem;" data-anim="fade-up" data-delay="250">All sessions are conducted with strict confidentiality and professional boundaries.</p>
+    <a href="/contact" data-anim="scale-in" data-delay="350"
+       style="background:var(--ls-lavender);color:var(--ls-dark);border-radius:100px;padding:0.75rem 1.8rem;font-size:0.82rem;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;display:inline-block;">
+      Connect With Us
+    </a>
+  </div>
+</section>
+{% endblock %}

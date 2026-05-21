@@ -1,0 +1,59 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Testimonials{% endblock %}
+{% block page_title %}Testimonials{% endblock %}
+{% block admin_content %}
+<div class="admin-table">
+  <div class="d-flex justify-content-between align-items-center p-3" style="border-bottom:1px solid #eee;">
+    <h6 class="mb-0" style="font-size:0.9rem;font-weight:600;">All Testimonials</h6>
+    <span style="font-size:0.78rem;color:#888;">{{ testimonials|length }} total</span>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead><tr>
+        <th>Author</th><th>Organisation</th><th>Content</th><th>Rating</th><th>Status</th><th>Actions</th>
+      </tr></thead>
+      <tbody>
+        {% for t in testimonials %}
+        <tr>
+          <td>
+            <div style="font-weight:500;font-size:0.85rem;">{{ t['author'] }}</div>
+            <div style="font-size:0.73rem;color:#888;">{{ t['role'] or '' }}</div>
+          </td>
+          <td style="font-size:0.82rem;">{{ t['org'] or '—' }}</td>
+          <td style="font-size:0.78rem;max-width:280px;color:#555;">"{{ (t['content'] or '')[:100] }}{% if t['content']|length > 100 %}…{% endif %}"</td>
+          <td style="color:#C9A84C;">{% for i in range(t['rating']) %}★{% endfor %}</td>
+          <td>
+            {% if t['approved'] %}
+              <span class="badge-approved">Approved</span>
+            {% else %}
+              <span class="badge-pending">Pending</span>
+            {% endif %}
+          </td>
+          <td>
+            <div class="d-flex gap-2">
+              {% if t['approved'] %}
+              <form method="POST" action="/admin/testimonials/{{ t['id'] }}/approve">
+                <input type="hidden" name="approved" value="0">
+                <button type="submit" class="btn btn-sm" style="background:#FFF3E0;color:#E65100;border:none;border-radius:8px;font-size:0.72rem;">Unpublish</button>
+              </form>
+              {% else %}
+              <form method="POST" action="/admin/testimonials/{{ t['id'] }}/approve">
+                <input type="hidden" name="approved" value="1">
+                <button type="submit" class="btn btn-sm" style="background:#E8F5E9;color:#2E7D32;border:none;border-radius:8px;font-size:0.72rem;">Approve</button>
+              </form>
+              {% endif %}
+              <form method="POST" action="/admin/testimonials/{{ t['id'] }}/delete"
+                    onsubmit="return confirm('Delete this testimonial?')">
+                <button type="submit" class="btn btn-sm" style="background:#FFEBEE;color:#C62828;border:none;border-radius:8px;font-size:0.72rem;">Delete</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="6" class="text-center" style="color:#aaa;padding:2rem;">No testimonials yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}

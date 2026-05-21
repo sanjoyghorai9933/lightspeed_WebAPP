@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block title %}Leadership & Training{% endblock %}
+{% block content %}
+
+<div class="ls-page-hero" style="background:linear-gradient(135deg,var(--ls-blue-deep),#1A4A78,#1E6A9A);position:relative;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:0;">
+    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=1400&q=70" alt="" style="width:100%;height:100%;object-fit:cover;opacity:0.14;mix-blend-mode:luminosity;">
+  </div>
+  <div class="container position-relative" style="z-index:1;">
+    <span class="section-eyebrow" style="color:var(--ls-teal-light);" data-anim="fade-down">Leadership & Behavioural Training</span>
+    <h1 data-anim="fade-up" data-delay="150">Leadership is not just a role.<br>It is a way of thinking.</h1>
+    <p data-anim="fade-up" data-delay="280">Lightseed develops leaders and teams who operate with clarity, emotional intelligence and responsibility.</p>
+    <a href="/contact" class="btn-ls-teal mt-4 d-inline-block" data-anim="scale-in" data-delay="400">Explore Programs</a>
+  </div>
+</div>
+
+<!-- CHALLENGE -->
+<section class="py-5" style="background:var(--ls-blue-pale);padding:5rem 0;">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5" data-anim="fade-left">
+        <span class="section-eyebrow" style="color:var(--ls-blue-deep);">The Real Challenge</span>
+        <p class="ls-big-quote" data-anim="blur-in" data-delay="100">Performance is ultimately shaped by <em style="color:var(--ls-blue-mid);">people.</em></p>
+        <p style="color:var(--ls-text-muted);line-height:1.8;margin-top:1rem;">Most organisations invest in strategy, systems and tools. But performance is ultimately shaped by behaviour, communication, decision-making and team dynamics. And these are human.</p>
+      </div>
+      <div class="col-lg-6 offset-lg-1">
+        <div class="d-flex flex-column gap-3" data-stagger="130">
+          <div style="background:#fff;padding:1.25rem;border-radius:12px;border-left:3px solid var(--ls-blue-mid);">
+            <h6 style="font-size:0.95rem;margin-bottom:0.25rem;">Leadership Development</h6>
+            <p style="font-size:0.82rem;color:var(--ls-text-muted);margin:0;">EQ, strategic thinking, decision-making clarity, conscious communication</p>
+          </div>
+          <div style="background:#fff;padding:1.25rem;border-radius:12px;border-left:3px solid var(--ls-teal);">
+            <h6 style="font-size:0.95rem;margin-bottom:0.25rem;">Team Effectiveness</h6>
+            <p style="font-size:0.82rem;color:var(--ls-text-muted);margin:0;">Trust, psychological safety, collaboration, accountability</p>
+          </div>
+          <div style="background:#fff;padding:1.25rem;border-radius:12px;border-left:3px solid var(--ls-blue-deep);">
+            <h6 style="font-size:0.95rem;margin-bottom:0.25rem;">NLP Practitioner Certification</h6>
+            <p style="font-size:0.82rem;color:var(--ls-text-muted);margin:0;">Applied behavioural tools for personal and professional growth</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="py-5 bg-ls-cream" style="padding:5rem 0;">
+  <div class="container">
+    <span class="section-eyebrow" style="color:var(--ls-blue-mid);" data-anim="fade-down">Our Core Areas</span>
+    <h2 class="mb-5" data-anim="blur-in" data-delay="120">Programs that build lasting capability</h2>
+    <div class="row g-4" data-stagger="100">
+      {% set programs_data = [
+        ('🎯','Lead Smart','Leadership','Emotionally intelligent leaders capable of navigating complexity with stability and awareness.'),
+        ('🤝','Building High-Trust Teams','Teams','Collaboration, accountability and psychological safety. Teams that perform with clarity and cohesion.'),
+        ('💬','Communication & Influence','Communication','Clarity of expression, listening, presence and persuasive communication that shapes outcomes.'),
+        ('🔥','Conflict Resolution','Conflict','Navigate conflict constructively. Preserve relationships. Turn disruption into clarity.'),
+        ('📊','Productivity & Excellence','Productivity','Focus, structured thinking, ownership mindset and performance discipline.'),
+        ('🧠','NLP Practitioner Certification','NLP','Applied tools for behavioural understanding, communication effectiveness and personal growth.')
+      ] %}
+      {% for icon, title, tag, desc in programs_data %}
+      <div class="col-md-6 col-lg-4">
+        <div class="ls-card p-4 h-100" style="border-top:3px solid var(--ls-blue-mid);">
+          <span class="ls-tag ls-tag-training">{{ tag }}</span>
+          <div style="font-size:1.6rem;margin-bottom:0.6rem;">{{ icon }}</div>
+          <h5 style="font-size:1.1rem;">{{ title }}</h5>
+          <p style="font-size:0.82rem;color:var(--ls-text-muted);">{{ desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="py-5 text-center" style="background:linear-gradient(135deg,var(--ls-blue-deep),#0D3A6E);padding:5rem 0;">
+  <div class="container">
+    <p class="serif fst-italic mx-auto" style="font-size:clamp(1.4rem,3vw,2.3rem);color:var(--ls-cream);line-height:1.4;max-width:600px;margin-bottom:1.5rem;" data-anim="blur-in">
+      "Strategy sets direction.<br>People determine success."
+    </p>
+    <p style="color:rgba(250,246,238,0.5);margin-bottom:2.5rem;" data-anim="fade-up" data-delay="150">Strong organisations are built on strong thinking.</p>
+    <a href="/contact" class="btn-ls-teal" data-anim="scale-in" data-delay="280">Partner With Lightseed</a>
+  </div>
+</section>
+{% endblock %}

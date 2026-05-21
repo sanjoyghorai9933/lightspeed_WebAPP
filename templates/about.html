@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}About Us{% endblock %}
+{% block content %}
+
+<div class="ls-page-hero" style="background:linear-gradient(135deg,#1A2E28,#2D4A3E);">
+  <div class="container">
+    <span class="section-eyebrow" style="color:var(--ls-gold);" data-anim="fade-down">Our Story</span>
+    <h1 data-anim="fade-up" data-delay="150">About Lightseed</h1>
+    <p data-anim="fade-up" data-delay="280">Born at the intersection of lived experience and disciplined inquiry — guided by the belief that real transformation begins within.</p>
+  </div>
+</div>
+
+<!-- FOUNDER -->
+<section id="founder" class="py-5 bg-ls-cream" style="padding:5rem 0;">
+  <div class="container">
+    <div class="text-center mb-5" data-anim="scale-in">
+      <img src="/static/images/logo.jpg" alt="Lightseed" style="width:80px;height:80px;object-fit:cover;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,0.1);">
+    </div>
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-4" data-anim="fade-left">
+        <div class="ls-founder-portrait">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt="Mini Gupta">
+          <div class="ls-founder-caption">
+            <p class="text-gold serif mb-0" style="font-size:1.1rem;">Mini Gupta</p>
+            <p style="color:rgba(250,246,238,0.55);font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;margin:0;">Founder & CEO</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8" data-anim="fade-right" data-delay="150">
+        <span class="section-eyebrow">Founder's Message</span>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.5rem);margin-bottom:1.5rem;">A Message from Mini Gupta</h2>
+        <blockquote style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.2vw,1.6rem);line-height:1.55;color:var(--ls-dark);font-style:italic;border-left:3px solid var(--ls-gold);padding-left:1.5rem;margin-bottom:1.5rem;">
+          "Lightseed was born at the intersection of lived experience and disciplined inquiry. Our work is shaped by decades of engagement with individuals, leaders and institutions — guided by the belief that real transformation begins within."
+        </blockquote>
+        <p style="color:var(--ls-text-muted);line-height:1.8;font-size:0.9rem;margin-bottom:1rem;">At Lightseed, we combine psychological depth, behavioural insight and practical application to create change that is ethical, meaningful and sustainable.</p>
+        <p style="color:var(--ls-text-muted);line-height:1.8;font-size:0.9rem;">Every program we design carries this intention — that the people who walk through Lightseed's work emerge with greater awareness, clearer direction and deeper capability.</p>
+        <p style="font-size:0.85rem;margin-top:1.5rem;">— <strong style="color:var(--ls-green-mid);">Mini Gupta</strong>, Founder & CEO, Lightseed Solutions LLP</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="py-5 bg-ls-cream-dark" style="padding:5rem 0;">
+  <div class="container">
+    <span class="section-eyebrow" data-anim="fade-down">Our Team</span>
+    <h2 class="mb-5" data-anim="blur-in" data-delay="120">The Lightseed Collective</h2>
+    <div class="row g-4" data-stagger="120">
+      <div class="col-6 col-md-3">
+        <div class="ls-card p-4 text-center h-100">
+          <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--ls-green-mid),var(--ls-teal));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ls-cream);">MG</div>
+          <h5 style="font-size:1rem;margin-bottom:0.2rem;">Mini Gupta</h5>
+          <p style="font-size:0.72rem;color:var(--ls-text-muted);letter-spacing:0.1em;text-transform:uppercase;">Founder & CEO</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="ls-card p-4 text-center h-100">
+          <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--ls-blue-mid),var(--ls-teal-light));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ls-cream);">LF</div>
+          <h5 style="font-size:1rem;margin-bottom:0.2rem;">Lead Facilitators</h5>
+          <p style="font-size:0.72rem;color:var(--ls-text-muted);letter-spacing:0.1em;text-transform:uppercase;">Training & Development</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="ls-card p-4 text-center h-100">
+          <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--ls-lavender),#9B6FA6);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ls-cream);">TC</div>
+          <h5 style="font-size:1rem;margin-bottom:0.2rem;">Therapy Associates</h5>
+          <p style="font-size:0.72rem;color:var(--ls-text-muted);letter-spacing:0.1em;text-transform:uppercase;">Clinical & Coaching</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="ls-card p-4 text-center h-100">
+          <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--ls-yellow),var(--ls-gold));display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--ls-dark);">WP</div>
+          <h5 style="font-size:1rem;margin-bottom:0.2rem;">Wellbeing Practitioners</h5>
+          <p style="font-size:0.72rem;color:var(--ls-text-muted);letter-spacing:0.1em;text-transform:uppercase;">Healing & Breathwork</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVITATION -->
+<section class="ls-invitation py-5 text-center" style="padding:5rem 0;">
+  <div class="container position-relative" style="z-index:1;">
+    <h2 class="text-cream" style="font-size:clamp(1.8rem,3.5vw,3rem);" data-anim="blur-in">Ready to work with Lightseed?</h2>
+    <p class="mx-auto mt-3 mb-4" style="max-width:450px;color:rgba(250,246,238,0.65);" data-anim="fade-up" data-delay="150">Every meaningful journey begins with a conversation.</p>
+    <a href="/contact" class="btn-ls-primary" data-anim="scale-in" data-delay="280">Connect With Us</a>
+  </div>
+</section>
+{% endblock %}

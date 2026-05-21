@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Programs & Services{% endblock %}
+{% block content %}
+
+<div class="ls-page-hero" style="background:linear-gradient(135deg,var(--ls-dark),var(--ls-dark-mid));">
+  <div class="container">
+    <span class="section-eyebrow" style="color:var(--ls-gold);" data-anim="fade-down">Programs & Services</span>
+    <h1 data-anim="fade-up" data-delay="150">Developing individuals, institutions & organisations</h1>
+    <p data-anim="fade-up" data-delay="280">Through awareness, behaviour and capability — across distinct yet interconnected domains.</p>
+  </div>
+</div>
+
+<section class="py-5 bg-ls-cream" style="padding:5rem 0;">
+  <div class="container">
+    <p class="serif fst-italic mb-5" style="font-size:1.3rem;color:var(--ls-text-muted);max-width:620px;" data-anim="fade-up">
+      Not all development needs the same approach. Our programs are designed across distinct yet interconnected domains.
+    </p>
+
+    {% set service_areas = [
+      ('01', 'Leadership & Behavioural Training', '/training', 'training',
+       'Develop leaders, teams and professionals who operate with clarity, responsibility and emotional intelligence.',
+       [('Leadership Development','🎯'),('Team Effectiveness','🤝'),('Communication & Influence','💬'),('NLP Certification','🧠')]),
+      ('02', 'Lightseed Shuddhi', '/shuddhi', 'compliance',
+       'Building safe, responsible and legally compliant environments through structured awareness programs.',
+       [('POSH Awareness','⚖️'),('POCSO Protection','🛡️'),('DEI Sensitisation','🌍')]),
+      ('03', 'Education & Employability', '/education', 'education',
+       'Preparing educators and students for the real demands of the professional world.',
+       [('Faculty Development','🎓'),('Plug & Play Freshers','🚀')]),
+      ('04', 'Healing & Inner Alignment', '/healing', 'healing',
+       'Supporting individuals and organisations in building resilience, emotional balance and sustainable performance.',
+       [('Praankosh','🌿'),('Meditation & Awareness','🧘'),('Emotional Reset Circles','💚')]),
+      ('05', 'Therapy & Coaching', '/therapy', 'therapy',
+       'Confidential, structured support for individuals navigating emotional patterns, stress and life transitions.',
+       [('Saarthi — 1:1 Therapy','🕊️'),('Group Counselling','👥'),('Hypnotherapy','✨')])
+    ] %}
+
+    <div class="d-flex flex-column gap-5">
+      {% for num, title, link, cat, desc, sub_programs in service_areas %}
+      <div class="row g-4 align-items-center {% if loop.index is even %}flex-lg-row-reverse{% endif %} pb-5" style="border-bottom:1px solid var(--ls-cream-dark);">
+        <div class="col-lg-5" data-anim="{% if loop.index is even %}fade-right{% else %}fade-left{% endif %}">
+          <span class="section-eyebrow">{{ num }}</span>
+          <h3 style="font-size:1.8rem;margin-bottom:1rem;">{{ title }}</h3>
+          <p style="color:var(--ls-text-muted);line-height:1.8;margin-bottom:1.5rem;">{{ desc }}</p>
+          <a href="{{ link }}" class="btn-ls-green" style="font-size:0.78rem;padding:0.6rem 1.4rem;">Explore →</a>
+        </div>
+        <div class="col-lg-6 {% if loop.index is even %}me-lg-auto{% else %}ms-lg-auto{% endif %}">
+          <div class="row g-3" data-stagger="110">
+            {% for prog, icon in sub_programs %}
+            <div class="col-6">
+              <div class="ls-card p-3 h-100" style="border-top:2px solid var(--ls-gold);">
+                <div style="font-size:1.4rem;margin-bottom:0.4rem;">{{ icon }}</div>
+                <span class="ls-tag ls-tag-{{ cat }}" style="margin-bottom:0.5rem;">{{ cat|title }}</span>
+                <div style="font-size:0.88rem;font-weight:500;color:var(--ls-dark);">{{ prog }}</div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-5 py-4" style="background:var(--ls-green-pale);border-radius:20px;" data-anim="scale-in">
+      <h4 style="font-size:1.4rem;margin-bottom:0.75rem;">Not sure where to begin?</h4>
+      <p style="color:var(--ls-text-muted);margin-bottom:1.5rem;">We'll help you find the right starting point.</p>
+      <a href="/contact" class="btn-ls-green">Begin the Conversation</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

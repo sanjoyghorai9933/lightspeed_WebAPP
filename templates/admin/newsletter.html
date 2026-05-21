@@ -1,0 +1,53 @@
+{% extends "admin/base_admin.html" %}
+{% block title %}Newsletter{% endblock %}
+{% block page_title %}Newsletter Subscribers{% endblock %}
+{% block admin_content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <p class="mb-0" style="font-size:0.85rem;color:#666;">{{ subscribers|length }} subscribers total</p>
+  <a href="#" onclick="exportCSV()" class="btn btn-sm" style="background:#2D4A3E;color:#fff;border-radius:8px;font-size:0.78rem;">Export CSV</a>
+</div>
+<div class="admin-table">
+  <div class="table-responsive">
+    <table class="table" id="subTable">
+      <thead><tr>
+        <th>#</th><th>Email</th><th>Name</th><th>Subscribed</th><th>Action</th>
+      </tr></thead>
+      <tbody>
+        {% for s in subscribers %}
+        <tr>
+          <td style="color:#aaa;font-size:0.75rem;">{{ s['id'] }}</td>
+          <td style="font-size:0.85rem;font-weight:500;">{{ s['email'] }}</td>
+          <td style="font-size:0.82rem;color:#666;">{{ s['name'] or '—' }}</td>
+          <td style="font-size:0.75rem;color:#aaa;">{{ s['created_at'][:16] }}</td>
+          <td>
+            <form method="POST" action="/admin/newsletter/{{ s['id'] }}/delete"
+                  onsubmit="return confirm('Unsubscribe {{ s['email'] }}?')">
+              <button type="submit" class="btn btn-sm" style="background:#FFEBEE;color:#C62828;border:none;border-radius:8px;font-size:0.72rem;">Remove</button>
+            </form>
+          </td>
+        </tr>
+        {% else %}
+        <tr><td colspan="5" class="text-center" style="color:#aaa;padding:2rem;">No subscribers yet.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+function exportCSV() {
+  const rows = [['ID','Email','Name','Date']];
+  document.querySelectorAll('#subTable tbody tr').forEach(tr => {
+    const cells = tr.querySelectorAll('td');
+    if (cells.length >= 4) rows.push([cells[0].innerText, cells[1].innerText, cells[2].innerText, cells[3].innerText]);
+  });
+  const csv = rows.map(r => r.join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'lightseed_subscribers.csv';
+  a.click();
+}
+</script>
+{% endblock %}

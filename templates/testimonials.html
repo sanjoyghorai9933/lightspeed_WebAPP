@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Testimonials{% endblock %}
+{% block content %}
+
+<div class="ls-page-hero" style="background:linear-gradient(135deg,var(--ls-green-deep),var(--ls-teal));">
+  <div class="container">
+    <span class="section-eyebrow" style="color:var(--ls-gold);" data-anim="fade-down">What People Say</span>
+    <h1 data-anim="fade-up" data-delay="150">Voices of Transformation</h1>
+    <p data-anim="fade-up" data-delay="280">Reflections from those who have walked the Lightseed journey.</p>
+  </div>
+</div>
+
+<section class="py-5 bg-ls-dark" style="padding:5rem 0;position:relative;overflow:hidden;">
+  <div class="container">
+    {% if testimonials %}
+    <div class="row g-4" data-stagger="120">
+      {% for t in testimonials %}
+      <div class="col-md-6 col-lg-4">
+        <div class="ls-testimonial h-100">
+          <div class="ls-stars mb-2">{% for i in range(t['rating']) %}★{% endfor %}</div>
+          <blockquote>"{{ t['content'] }}"</blockquote>
+          <div class="ls-testimonial-author">{{ t['author'] }}</div>
+          {% if t['role'] and t['role'] != t['author'] %}
+          <div style="font-size:0.72rem;color:rgba(250,246,238,0.4);">{{ t['role'] }}</div>
+          {% endif %}
+          {% if t['org'] %}<div class="ls-testimonial-org">{{ t['org'] }}</div>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-5" style="color:rgba(250,246,238,0.4);">
+      <p style="font-size:1.1rem;">Testimonials coming soon.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="ls-invitation py-5 text-center" style="padding:5rem 0;">
+  <div class="container position-relative" style="z-index:1;">
+    <h2 class="text-cream" style="font-size:clamp(1.8rem,3.5vw,3rem);" data-anim="blur-in">Ready to begin your journey?</h2>
+    <p class="mx-auto mt-3 mb-4" style="max-width:420px;color:rgba(250,246,238,0.65);" data-anim="fade-up" data-delay="150">Every meaningful journey begins with a conversation.</p>
+    <a href="/contact" class="btn-ls-primary" data-anim="scale-in" data-delay="280">Connect With Lightseed</a>
+  </div>
+</section>
+{% endblock %}
