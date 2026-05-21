@@ -338,9 +338,6 @@ LIGHTSEED PREMIUM HERO
   animation:fade 3s ease-in-out infinite;
 }
 
-.animate-rays{
-  animation:rays 2.5s ease-in-out infinite;
-}
 
 .animate-seed{
   transform-origin:center;
@@ -395,15 +392,6 @@ LIGHTSEED PREMIUM HERO
   }
 }
 
-@keyframes rays{
-  0%,100%{
-    opacity:0.4;
-  }
-
-  50%{
-    opacity:1;
-  }
-}
 
 @keyframes seed{
   0%,100%{
