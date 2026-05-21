@@ -339,6 +339,8 @@ LIGHTSEED PREMIUM HERO
 }
 
 .animate-rays{
+  transform-box:fill-box;
+  transform-origin:50% 100%;
   animation:rays 2.5s ease-in-out infinite;
 }
 
@@ -398,10 +400,12 @@ LIGHTSEED PREMIUM HERO
 @keyframes rays{
   0%,100%{
     opacity:0.4;
+    transform:scaleY(0.25);
   }
 
   50%{
     opacity:1;
+    transform:scaleY(1);
   }
 }
 
