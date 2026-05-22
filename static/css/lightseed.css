@@ -341,7 +341,9 @@ LIGHTSEED PREMIUM HERO
 .animate-rays{
   transform-box:fill-box;
   transform-origin:50% 100%;
-  animation:rays 2.5s ease-in-out infinite;
+  animation:none;
+  transform:none;
+  opacity:1;
 }
 
 .animate-seed{
